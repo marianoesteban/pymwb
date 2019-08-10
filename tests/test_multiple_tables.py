@@ -21,6 +21,8 @@ class TestMultipleTables(unittest.TestCase):
         self.assertIsNotNone(mydb_schema.get_table('country'))
         self.assertIsNotNone(mydb_schema.get_table('user'))
         self.assertIsNotNone(mydb_schema.get_table('product'))
+        self.assertEqual(len(mydb_schema.views), 1)
+        self.assertIsNotNone(mydb_schema.get_view('premium_user'))
 
     def test_tables(self):
         mydb_schema = self.model.get_schema('mydb')
@@ -55,6 +57,14 @@ class TestMultipleTables(unittest.TestCase):
         self.assertIsNotNone(product_table.get_column('name'))
         self.assertIsNotNone(product_table.get_column('description'))
         self.assertIsNotNone(product_table.get_column('price'))
+
+    def test_view(self):
+        premium_user_view = self.model.get_schema('mydb').get_view('premium_user')
+        self.assertEqual(premium_user_view.name, 'premium_user')
+        self.assertEqual(premium_user_view.sql_definition, 'CREATE VIEW `premium_user` AS\n'
+            'SELECT user_id, username, registration_date\n'
+            'FROM user\n'
+            'WHERE premium_user = 1;')
 
     def test_columns(self):
         mydb_schema = self.model.get_schema('mydb')

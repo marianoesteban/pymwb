@@ -31,13 +31,14 @@ for schema in example_model.schemas:
         print('\tTable:', table.name)
         for column in table.columns:
             print('\t\t' + column.name + ':', column.datatype)
+    for view in schema.views:
+        print('\tView:', view.name)
 ```
 
 ## Missing features
 
 The following features are not yet implemented:
 
-* Views
 * Primary keys
 * Foreign keys
 * Relationships

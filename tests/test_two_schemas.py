@@ -18,7 +18,9 @@ class TestTwoSchemas(unittest.TestCase):
         db1_schema = self.model.get_schema('db1')
         self.assertEqual(db1_schema.name, 'db1')
         self.assertEqual(len(db1_schema.tables), 0)
+        self.assertEqual(len(db1_schema.views), 0)
 
         db2_schema = self.model.get_schema('db2')
         self.assertEqual(db2_schema.name, 'db2')
         self.assertEqual(len(db2_schema.tables), 0)
+        self.assertEqual(len(db2_schema.views), 0)

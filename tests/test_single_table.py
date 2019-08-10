@@ -18,6 +18,7 @@ class TestSingleTable(unittest.TestCase):
         self.assertEqual(mydb_schema.name, 'mydb')
         self.assertEqual(len(mydb_schema.tables), 1)
         self.assertIsNotNone(mydb_schema.get_table('person'))
+        self.assertEqual(len(mydb_schema.views), 0)
 
     def test_table(self):
         person_table = self.model.get_schema('mydb').get_table('person')
