@@ -35,7 +35,7 @@ for schema in example_model.schemas:
         print('\tView:', view.name)
 ```
 
-## Missing features
+## Missing Features
 
 The following features are not yet implemented:
 
